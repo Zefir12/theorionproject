@@ -21,6 +21,12 @@ jobs:
 
       - name: Install dependencies
         uses: bahmutov/npm-install@v1
+      
+      - name: Inject secret into app.tsx
+        env:
+          TEST_KEY: ${{ secrets.TEST_KEY }}
+        run: |
+          sed -i "s|REACT_APP_API_KEY_PLACEHOLDER|${TEST_KEY}|g" ./dist/app.tsx
 
       - name: Build project
         run: npm run build
@@ -43,12 +49,6 @@ jobs:
         with:
           name: production-files
           path: ./dist
-      
-      - name: Inject secret into app.tsx
-        env:
-          TEST_KEY: ${{ secrets.TEST_KEY }}
-        run: |
-          sed -i "s|REACT_APP_API_KEY_PLACEHOLDER|${TEST_KEY}|g" ./dist/app.tsx
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
