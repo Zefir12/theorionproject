@@ -49,3 +49,9 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
+      
+      - name: Inject secrets
+        env:
+          TEST_KEY: ${{ secrets.TEST_KEY }}
+        run: |
+          sed -i "s|REACT_APP_API_KEY_PLACEHOLDER|${REACT_APP_API_KEY}|g" build/index.html
