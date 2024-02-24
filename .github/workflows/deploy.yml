@@ -33,8 +33,6 @@ jobs:
 
   deploy:
     name: Deploy
-    env:
-      TEST_KEY: ${{ secrets.TEST_KEY }}
     needs: build
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
@@ -45,6 +43,12 @@ jobs:
         with:
           name: production-files
           path: ./dist
+      
+      - name: Inject secret into app.tsx
+        env:
+          TEST_KEY: ${{ secrets.TEST_KEY }}
+        run: |
+          sed -i "s|REACT_APP_API_KEY_PLACEHOLDER|${TEST_KEY}|g" ./dist/app.tsx
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3

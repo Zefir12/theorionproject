@@ -5,6 +5,7 @@ import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
+  const apiKey = 'REACT_APP_API_KEY_PLACEHOLDER';
 
   return (
     <>
@@ -16,7 +17,7 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
-      <h1>Vite + React + {process.env.TEST_KEY}</h1>
+      <h1>Vite + React + {apiKey}</h1>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
