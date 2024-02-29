@@ -43,8 +43,8 @@ jobs:
           SUPA_KEY: ${{ secrets.SUPA_KEY }}
         run: |
           echo "Replacing #{SUPA_URL}# with $SUPA_URL";
-          find . -name '*.tsx' -type f -exec sed -i "s/#{SUPA_URL}#/${SUPA_URL//\//\\/}/g" {} \;
-          find . -name '*.tsx' -type f -exec sed -i "s/#{SUPA_KEY}#/${SUPA_KEY//\//\\/}/g" {} \;
+          find . -name '.env' -type f -exec sed -i "s/#{SUPA_URL}#/${SUPA_URL//\//\\/}/g" {} \;
+          find . -name '.env' -type f -exec sed -i "s/#{SUPA_KEY}#/${SUPA_KEY//\//\\/}/g" {} \;
       - name: Build
         run: npm run build && cp ./dist/index.html ./dist/404.html
       - name: Setup Pages

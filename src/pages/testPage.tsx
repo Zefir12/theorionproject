@@ -2,7 +2,9 @@ import { useState } from 'react';
 import { createClient } from '@supabase/supabase-js';
 
 
-const supabase = createClient("#{SUPA_URL}#", "#{SUPA_KEY}#");
+//const supabase = createClient("#{SUPA_URL}#", "#{SUPA_KEY}#");
+console.log(import.meta.env.VITE_SUPA_URL)
+const supabase = createClient(import.meta.env.VITE_SUPA_URL, import.meta.env.VITE_SUPA_KEY)
 
 
 export default function TestPage() {
@@ -10,7 +12,6 @@ export default function TestPage() {
 
 
     const signIn = async () => {
-        console.log("#{SUPA_URL}#")
         const { error } = await supabase.auth.signInWithPassword({
           email: 'email',
           password: '[pswd]'
