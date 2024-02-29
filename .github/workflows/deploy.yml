@@ -37,6 +37,10 @@ jobs:
           cache: 'npm'
       - name: Install dependencies
         run: npm install
+      - name: Find and Replace Password - Using Secrets
+        run: find *.json -type f -exec sed -i ''s/#{SUPA_URL}#/${{ secrets.SUPA_URL }}/g'' {} \;
+      - name: Find and Replace Password - Using Secrets 2
+        run: find *.json -type f -exec sed -i ''s/#{SUPA_KEY}#/${{ secrets.SUPA_KEY }}/g'' {} \;
       - name: Build
         run: npm run build && cp ./dist/index.html ./dist/404.html
       - name: Setup Pages
