@@ -37,16 +37,14 @@ jobs:
           cache: 'npm'
       - name: Install dependencies
         run: npm install
+      - name: Build
+        run: npm run build && cp ./dist/index.html ./dist/404.html
       - name: Find and Replace Password - Using Secrets
         env:
           SUPA_URL: ${{ secrets.SUPA_URL }}
         run: |
           echo "Replacing #{SUPA_URL}# with $SUPA_URL";
           find *.json -type f -exec sed -i "s/#{SUPA_URL}#/lol/g" {} \;
-      - name: Find and Replace Password - Using Secrets 2
-        run: find *.json -type f -exec sed -i ''s/#{SUPA_KEY}#/${{ secrets.SUPA_KEY }}/g'' {} \;
-      - name: Build
-        run: npm run build && cp ./dist/index.html ./dist/404.html
       - name: Setup Pages
         uses: actions/configure-pages@v3
       - name: Upload artifact
