@@ -42,7 +42,7 @@ jobs:
           SUPA_URL: ${{ secrets.SUPA_URL }}
         run: |
           echo "Replacing #{SUPA_URL}# with $SUPA_URL";
-          find *.json -type f -exec sed -i ''s/#{SUPA_URL}#/${SUPA_URL}/g'' {} \;
+          find *.json -type f -exec sed -i "s/#{SUPA_URL}#/lol/g" {} \;
       - name: Find and Replace Password - Using Secrets 2
         run: find *.json -type f -exec sed -i ''s/#{SUPA_KEY}#/${{ secrets.SUPA_KEY }}/g'' {} \;
       - name: Build
