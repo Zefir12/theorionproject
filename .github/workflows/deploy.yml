@@ -38,7 +38,9 @@ jobs:
       - name: Install dependencies
         run: npm install
       - name: Find and Replace Password - Using Secrets
-        run: find *.json -type f -exec sed -i ''s/#{SUPA_URL}#/${{ secrets.SUPA_URL }}/g'' {} \;
+        env:
+          SUPA_URL: ${{ secrets.SUPA_URL }}
+        run: find *.json -type f -exec sed -i ''s/#{SUPA_URL}#/${{ env.SUPA_URL }}/g'' {} \;
       - name: Find and Replace Password - Using Secrets 2
         run: find *.json -type f -exec sed -i ''s/#{SUPA_KEY}#/${{ secrets.SUPA_KEY }}/g'' {} \;
       - name: Build
