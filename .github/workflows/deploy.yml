@@ -40,7 +40,7 @@ jobs:
       - name: Find and Replace Password - Using Secrets
         env:
           SUPA_URL: ${{ secrets.SUPA_URL }}
-        run: find *.json -type f -exec sed -i ''s/#{SUPA_URL}#/${{ env.SUPA_URL }}/g'' {} \;
+        run: find *.json -type f -exec sed -i ''s/#{SUPA_URL}#/${SUPA_URL}/g'' {} \;
       - name: Find and Replace Password - Using Secrets 2
         run: find *.json -type f -exec sed -i ''s/#{SUPA_KEY}#/${{ secrets.SUPA_KEY }}/g'' {} \;
       - name: Build
