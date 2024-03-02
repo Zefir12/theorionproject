@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { createClient } from '@supabase/supabase-js';
+import { Button, Card, TextInput } from '@mantine/core'
 
 
 //const supabase = createClient("#{SUPA_URL}#", "#{SUPA_KEY}#");
@@ -31,11 +32,11 @@ export default function TestPage() {
 
     return (
         <div className="flex flex-col items-center">
-            {user ? (
-                <button onClick={signOut}>Sign out</button>
-            ) : (
-                <button onClick={signIn}>Sign in</button>
-            )}
+          <Card>
+            <TextInput description='Email'></TextInput>
+            <TextInput description='Password'></TextInput>
+            <Button onClick={signIn}>Sign In</Button>
+          </Card>
         </div>
     );
 }
