@@ -10,12 +10,14 @@ const supabase = createClient(import.meta.env.VITE_SUPA_URL, import.meta.env.VIT
 
 export default function TestPage() {
     const [user, setUser] = useState<any>(null);
+    const [email, setEmail] = useState<string>('');
+    const [password, setPassword] = useState<string>('');
 
 
     const signIn = async () => {
         const { error } = await supabase.auth.signInWithPassword({
-          email: 'email',
-          password: '[pswd]'
+          email: email,
+          password: password
         });
     
         if (error) {
@@ -32,11 +34,21 @@ export default function TestPage() {
 
     return (
         <div className="flex flex-col items-center">
+          {user ??
           <Card>
-            <TextInput description='Email'></TextInput>
-            <TextInput description='Password'></TextInput>
+            <TextInput 
+              value={email}
+              onChange={(event) => setEmail(event.currentTarget.value)} 
+              description='Email'>
+            </TextInput>
+            <TextInput 
+              value={password}
+              onChange={(event) => setPassword(event.currentTarget.value)} 
+              description='Password'>
+            </TextInput>
             <Button onClick={signIn}>Sign In</Button>
           </Card>
+          }
         </div>
     );
 }
