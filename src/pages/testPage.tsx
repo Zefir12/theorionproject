@@ -1,9 +1,8 @@
 import { useState } from 'react';
 import { createClient } from '@supabase/supabase-js';
+import { Button, TextInput } from '@mantine/core';
 
 
-//const supabase = createClient("#{SUPA_URL}#", "#{SUPA_KEY}#");
-console.log(import.meta.env.VITE_SUPA_URL)
 const supabase = createClient(import.meta.env.VITE_SUPA_URL, import.meta.env.VITE_SUPA_KEY)
 
 
@@ -12,15 +11,16 @@ export default function TestPage() {
 
 
     const signIn = async () => {
-        const { error } = await supabase.auth.signInWithPassword({
-          email: 'email',
-          password: '[pswd]'
+        const { data, error } = await supabase.auth.signInWithPassword({
+          email: 'szefer397@gmail.com',
+          password: '666666'
         });
+        console.log(data)
     
         if (error) {
           console.error('Error signing in:', error.message);
         } else {
-          supabase.auth.getUser().then(res => {setUser(res); console.log(res)})
+          setUser(data)
         }
       };
 
@@ -31,11 +31,9 @@ export default function TestPage() {
 
     return (
         <div className="flex flex-col items-center">
-            {user ? (
-                <button onClick={signOut}>Sign out</button>
-            ) : (
-                <button onClick={signIn}>Sign in</button>
-            )}
+          <TextInput></TextInput>
+          <Button>asd</Button>
+          <button onClick={signIn}>Sign in</button>
         </div>
     );
 }
