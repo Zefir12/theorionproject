@@ -4,6 +4,7 @@ import App from './App.tsx'
 import './index.css'
 import '@mantine/core/styles.css';
 import { BrowserRouter } from 'react-router-dom'
+<<<<<<< HEAD
 import { MantineProvider, rem } from '@mantine/core'
 
 
@@ -33,5 +34,16 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         fontFamily: 'NexaFont, sans-serif'}}>        <App />
       </MantineProvider>
     </BrowserRouter>
+=======
+import { MantineProvider } from '@mantine/core'
+
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <React.StrictMode>
+    <MantineProvider>
+      <BrowserRouter basename='theorionproject'>
+        <App />
+      </BrowserRouter>
+    </MantineProvider>
+>>>>>>> d136e5d49228ff270a39151120f322cec95c1a50
   </React.StrictMode>,
 )
