@@ -17,7 +17,7 @@ export default function MainPage() {
           </a>
         </div>
         <div className="card">
-          <Button onClick={() => setCount((count) => count + 1)}>count is {count}</Button>asdasdasdasdasds
+          <Button onClick={() => setCount((count) => count + 1)}>count is {count}</Button>a
         </div>
       </div>
     )
