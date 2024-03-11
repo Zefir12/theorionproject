@@ -31,13 +31,13 @@ export default function TestPage() {
       };
 
     return (
-        <div className="flex flex-col items-center">
+        <div>
           {user ??
           <Card>
             <TextInput 
               value={email}
               onChange={(event) => setEmail(event.currentTarget.value)} 
-              description='Emailbeka'>
+              description='Email'>
             </TextInput>
             <TextInput 
               value={password}
