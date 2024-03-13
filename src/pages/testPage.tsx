@@ -1,10 +1,8 @@
 import { useState } from 'react';
-import { createClient } from '@supabase/supabase-js';
 import { Button, Card, PasswordInput, TextInput } from '@mantine/core'
 import '../styles/styles.scss'
+import { supabase } from '../supabase/supabase';
 
-
-const supabase = createClient(import.meta.env.VITE_SUPA_URL, import.meta.env.VITE_SUPA_KEY)
 
 
 export default function TestPage() {
@@ -36,7 +34,7 @@ export default function TestPage() {
       };
 
     return (
-        <div className='mydiv'>
+        <div className='center'>
           {!user ?
           <Card>
             <TextInput 
