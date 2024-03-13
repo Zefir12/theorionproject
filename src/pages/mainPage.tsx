@@ -10,13 +10,13 @@ export default function MainPage() {
       <div>
         <div>
           <a href="https://vitejs.dev" target="_blank">
-            <img src={viteLogo} className="logo" alt="Vite logo" />
+            <img src={viteLogo} alt="Vite logo" />
           </a>
           <a href="https://react.dev" target="_blank">
-            <img src={reactLogo} className="logo react" alt="React logo" />
+            <img src={reactLogo} alt="React logo" />
           </a>
         </div>
-        <div className="card">
+        <div>
           <Button onClick={() => setCount((count) => count + 1)}>count is {count}</Button>a
         </div>
       </div>
