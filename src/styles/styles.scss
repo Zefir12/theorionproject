@@ -1,0 +1,21 @@
+$primary-color: #333;
+
+
+
+body > #root {
+  height: 100vh;
+}
+
+.text {
+  color: $primary-color;
+}
+button {
+  color: $primary-color;
+  border: 2px solid $primary-color;
+}
+.mydiv {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

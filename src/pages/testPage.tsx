@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { createClient } from '@supabase/supabase-js';
-import { Button, Card, TextInput } from '@mantine/core'
+import { Button, Card, PasswordInput, TextInput } from '@mantine/core'
+import '../styles/styles.scss'
 
 
 const supabase = createClient(import.meta.env.VITE_SUPA_URL, import.meta.env.VITE_SUPA_KEY)
@@ -21,30 +22,38 @@ export default function TestPage() {
         if (error) {
           console.error('Error signing in:', error.message);
         } else {
-
+          setUser(supabase.auth.getUser());
         }
       };
 
     const signOut = async () => {
-        await supabase.auth.signOut();
-        setUser(null);
+        const { error } = await supabase.auth.signOut();
+        if (error) {
+          console.error('Error signing in:', error.message);
+        } else {
+          setUser(null);
+        }
       };
 
     return (
-        <div>
-          {user ??
+        <div className='mydiv'>
+          {!user ?
           <Card>
             <TextInput 
               value={email}
               onChange={(event) => setEmail(event.currentTarget.value)} 
               description='Email'>
             </TextInput>
-            <TextInput 
+            <PasswordInput 
               value={password}
               onChange={(event) => setPassword(event.currentTarget.value)} 
               description='Password'>
-            </TextInput>
+            </PasswordInput>
             <Button onClick={signIn}>Sign In</Button>
+          </Card> 
+          :
+          <Card>
+            <Button onClick={signOut}>Logout</Button>
           </Card>
           }
         </div>
