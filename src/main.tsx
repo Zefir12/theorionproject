@@ -4,7 +4,8 @@ import App from './App.tsx'
 import '@mantine/core/styles.css';
 import { BrowserRouter } from 'react-router-dom'
 import { MantineProvider, createTheme } from '@mantine/core'
-
+import { Provider } from 'react-redux'
+import { store } from './store/store.ts';
 
 const theme = createTheme({
   focusRing: 'never'
@@ -12,10 +13,12 @@ const theme = createTheme({
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <MantineProvider theme={theme} defaultColorScheme="dark">
-      <BrowserRouter basename='theorionproject'>
-        <App />
-      </BrowserRouter>
-    </MantineProvider>
+    <Provider store={store}>
+      <MantineProvider theme={theme} defaultColorScheme="dark">
+        <BrowserRouter basename='theorionproject'>
+          <App />
+        </BrowserRouter>
+      </MantineProvider>
+    </Provider>
   </React.StrictMode>,
 )

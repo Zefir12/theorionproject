@@ -1,7 +1,5 @@
 $primary-color: #333;
 
-
-
 body > #root {
   height: 100vh;
 }
@@ -14,8 +12,9 @@ button {
   border: 2px solid $primary-color;
 }
 .center {
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+

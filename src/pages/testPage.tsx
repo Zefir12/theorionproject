@@ -1,12 +1,21 @@
 import { useState } from 'react';
-import { Button, Card, PasswordInput, TextInput } from '@mantine/core'
+import { Button, Card, PasswordInput, TextInput, Text } from '@mantine/core'
 import '../styles/styles.scss'
 import { supabase } from '../supabase/supabase';
+import { useAppDispatch, useAppSelector } from '../store/hooks';
+import { login, logout } from '../store/slices/userSlice';
+import { getUserLogged, setUserLogged } from '../store/localStorage/settings';
+import { useNavigate } from 'react-router-dom';
 
 
 
 export default function TestPage() {
-    const [user, setUser] = useState<any>(null);
+    const dispatch = useAppDispatch();
+    const loginUser = () => dispatch(login());
+    const logoutUser = () => dispatch(logout());
+    const user = useAppSelector((state) => state.user);
+    let navigate = useNavigate(); 
+
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
 
@@ -20,7 +29,8 @@ export default function TestPage() {
         if (error) {
           console.error('Error signing in:', error.message);
         } else {
-          setUser(supabase.auth.getUser());
+          loginUser();
+          setUserLogged(true)
         }
       };
 
@@ -29,13 +39,19 @@ export default function TestPage() {
         if (error) {
           console.error('Error signing in:', error.message);
         } else {
-          setUser(null);
+          logoutUser();
+          setUserLogged(false)
         }
       };
+    
+    const goToDashboard = () => {
+      const path = '/dashboard'; 
+      navigate(path);
+    }
 
     return (
         <div className='center'>
-          {!user ?
+          {!getUserLogged() ?
           <Card>
             <TextInput 
               value={email}
@@ -47,11 +63,13 @@ export default function TestPage() {
               onChange={(event) => setPassword(event.currentTarget.value)} 
               description='Password'>
             </PasswordInput>
-            <Button onClick={signIn}>Sign In</Button>
+            <Button onClick={signIn}>Login</Button>
           </Card> 
           :
           <Card>
+            <Button onClick={goToDashboard}>Dashboard</Button>
             <Button onClick={signOut}>Logout</Button>
+            <Text>{user.login.valueOf()} sas</Text>
           </Card>
           }
         </div>

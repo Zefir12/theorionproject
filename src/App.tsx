@@ -1,20 +1,12 @@
-import { Navigate, Outlet, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import TestPage from './pages/testPage';
 import MainPage from './pages/mainPage';
 import '@mantine/core/styles.css';
 import DashboardPage from './pages/dashboardPage';
+import { ProtectedRoute } from './components/utilities/protectedRoute';
 
 
 function App() {
-
-
-  const ProtectedRoute = ({ redirectPath = '/' }) => {
-    if (true == null) {
-      return <Navigate to={redirectPath} replace />;
-    }
-    
-    return <Outlet />;
-  };
   return (
     <>
       <Routes>
