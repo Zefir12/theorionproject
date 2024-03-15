@@ -1,15 +1,14 @@
 import { useEffect, useState } from "react";
-import { Button, Card, PasswordInput, TextInput, Text } from "@mantine/core";
+import { Button, Card, PasswordInput, TextInput } from "@mantine/core";
 import "../styles/styles.scss";
 import { supabase } from "../supabase/supabase";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
-import { login, logout } from "../store/slices/userSlice";
+import { login } from "../store/slices/userSlice";
 import { useNavigate } from "react-router-dom";
 
 export default function LoginPage() {
     const dispatch = useAppDispatch();
     const loginUser = () => dispatch(login());
-    const logoutUser = () => dispatch(logout());
     const user = useAppSelector((state) => state.user);
     let navigate = useNavigate();
 
@@ -26,15 +25,6 @@ export default function LoginPage() {
             console.error("Error signing in:", error.message);
         } else {
             loginUser();
-        }
-    };
-
-    const signOut = async () => {
-        const { error } = await supabase.auth.signOut();
-        if (error) {
-            console.error("Error signing in:", error.message);
-        } else {
-            logoutUser();
         }
     };
 

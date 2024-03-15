@@ -1,15 +1,25 @@
 import { ActionIcon, Button, Group, Stack, Text, rem } from "@mantine/core";
-import { IconArrowNarrowLeft, IconMenu2, IconX } from "@tabler/icons-react";
+import { IconArrowNarrowLeft, IconMenu2 } from "@tabler/icons-react";
 import "../styles/sidebar.scss";
 import { useState } from "react";
 import { getSidebarVisible, setSidebarVisible } from "../store/localStorage/settings";
 import { useAppDispatch } from "../store/hooks";
 import { logout } from "../store/slices/userSlice";
+import { supabase } from "../supabase/supabase";
 
 export const SideBar = () => {
     const [sidebarVisible, setIsHidden] = useState(getSidebarVisible());
     const dispatch = useAppDispatch();
-    const logoutUser = () => dispatch(logout());
+
+    const logoutUser = async () => {
+        const { error } = await supabase.auth.signOut();
+        if (error) {
+            console.error("Error signing in:", error.message);
+        } else {
+            dispatch(logout());
+        }
+    }
+
 
     const toggleSidebar = () => {
         const value = getSidebarVisible();
