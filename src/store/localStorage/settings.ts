@@ -15,3 +15,12 @@ export const getUserLogged = (): boolean => {
 export const setUserLogged = (value: boolean): void => {
     setItem('userLogged', value);
 };
+
+export const getSidebarVisible = (): boolean => {
+    const data = getItem('sidebarVisible');
+    return data === 'true';
+};
+
+export const setSidebarVisible = (value: boolean): void => {
+    setItem('sidebarVisible', value);
+};

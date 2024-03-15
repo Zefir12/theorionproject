@@ -6,9 +6,12 @@ import { BrowserRouter } from 'react-router-dom'
 import { MantineProvider, createTheme } from '@mantine/core'
 import { Provider } from 'react-redux'
 import { store } from './store/store.ts';
+import { SideBar } from './components/sideBar.tsx';
+
 
 const theme = createTheme({
-  focusRing: 'never'
+  focusRing: 'never',
+  primaryColor: 'violet'
 });
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
@@ -16,6 +19,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <Provider store={store}>
       <MantineProvider theme={theme} defaultColorScheme="dark">
         <BrowserRouter basename='theorionproject'>
+          <SideBar />
           <App />
         </BrowserRouter>
       </MantineProvider>

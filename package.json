@@ -23,6 +23,8 @@
     "@mantine/nprogress": "^7.6.1",
     "@mantine/spotlight": "^7.6.1",
     "@mantine/tiptap": "^7.6.1",
+    "@nivo/pie": "^0.85.1",
+    "@nivo/sunburst": "^0.85.1",
     "@reduxjs/toolkit": "^2.2.1",
     "@supabase/supabase-js": "^2.39.7",
     "@tabler/icons-react": "^2.47.0",

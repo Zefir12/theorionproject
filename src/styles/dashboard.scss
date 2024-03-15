@@ -7,15 +7,15 @@
 }
 
 .dashboard-container {
-    height: 100svh;
+    min-height: 100svh;
     width: 60%;
     display: flex;
     background-color: rgba(0, 0, 0, 0.06);
     gap: 10px;
     flex-flow: row wrap;
     justify-content: center;
-    align-items: center;
-    align-content: center;
+    align-items: flex-start;
+    align-content: flex-start;
 }
 
 
