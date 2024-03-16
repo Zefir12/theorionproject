@@ -1,9 +1,10 @@
 import { Navigate, Outlet } from "react-router-dom";
-import { useAppSelector } from "../../store/hooks";
+import { getUserLogged } from "../../store/localStorage/settings";
+import { useState } from "react";
 
-export const ProtectedRoute = ({ redirectPath = '/' }) => {
-    const user = useAppSelector((state) => state.user);
-    if (user.login) {
+export const ProtectedRoute = ({ redirectPath = '//' }) => {
+    const [logged] = useState(getUserLogged())
+    if (logged) {
         return <Outlet />;
     }
     return <Navigate to={redirectPath} replace />;

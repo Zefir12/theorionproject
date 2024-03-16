@@ -2,24 +2,25 @@ import { ActionIcon, Button, Group, Stack, Text, rem } from "@mantine/core";
 import { IconArrowNarrowLeft, IconMenu2 } from "@tabler/icons-react";
 import "../styles/sidebar.scss";
 import { useState } from "react";
-import { getSidebarVisible, setSidebarVisible } from "../store/localStorage/settings";
-import { useAppDispatch } from "../store/hooks";
-import { logout } from "../store/slices/userSlice";
+import { getSidebarVisible, getUserLogged, setSidebarVisible, setUserLogged } from "../store/localStorage/settings";
 import { supabase } from "../supabase/supabase";
+import { useNavigate } from "react-router-dom";
 
 export const SideBar = () => {
     const [sidebarVisible, setIsHidden] = useState(getSidebarVisible());
-    const dispatch = useAppDispatch();
+    const [, setLogged] = useState(getUserLogged());
+    const navigate = useNavigate();
 
     const logoutUser = async () => {
         const { error } = await supabase.auth.signOut();
         if (error) {
             console.error("Error signing in:", error.message);
         } else {
-            dispatch(logout());
+            setUserLogged(false);
+            setLogged(false);
+            navigate("//");
         }
-    }
-
+    };
 
     const toggleSidebar = () => {
         const value = getSidebarVisible();
@@ -27,12 +28,11 @@ export const SideBar = () => {
         setIsHidden(!value);
     };
 
-
     return (
-        <div className={`sidebar ${sidebarVisible ? "sidebar-hidden" : ""}`}>
+        <div className={`sidebar ${!sidebarVisible ? "sidebar-hidden" : ""}`}>
             <div className="sidebar-content">
                 <Stack p={rem(10)} pt={rem(16)}>
-                    {!sidebarVisible ? (
+                    {sidebarVisible ? (
                         <Group justify="space-between" wrap="nowrap">
                             <Text pl={rem(8)} fw={700} tt="uppercase">
                                 Menu
@@ -49,9 +49,11 @@ export const SideBar = () => {
                         </Group>
                     )}
                     <Stack gap={rem(5)}>
-                        <Button variant="subtle">Dashboard</Button>
-                        <Button variant="subtle">pog</Button>
-                        <Button variant="subtle" onClick={logoutUser}>Logout</Button>
+                        <Button variant="subtle" onClick={() => navigate("dashboard")}>Dashboard</Button>
+                        <Button variant="subtle" onClick={() => navigate("food")}>Food</Button>
+                        <Button variant="subtle" onClick={logoutUser}>
+                            Logout
+                        </Button>
                     </Stack>
                 </Stack>
             </div>

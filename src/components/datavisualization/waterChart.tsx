@@ -1,6 +1,6 @@
 import { Blockquote, List, ThemeIcon, rem } from "@mantine/core";
 import { PieTooltipProps, ResponsivePie } from "@nivo/pie";
-import { IconCircleCheck, IconCircleDashed, IconX } from "@tabler/icons-react";
+import { IconCircleCheck } from "@tabler/icons-react";
 
 interface FoodPieChartDataItem {
     id: string;
@@ -9,7 +9,7 @@ interface FoodPieChartDataItem {
     color: string;
 }
 
-export const FoodChart2 = (props: { data: FoodPieChartDataItem[] }) => {
+export const WaterChart = (props: { data: FoodPieChartDataItem[] }) => {
     interface PieChartProps {
         centerX: string | number;
         centerY: string | number;
@@ -30,25 +30,16 @@ export const FoodChart2 = (props: { data: FoodPieChartDataItem[] }) => {
                 >
                     <List.Item>{props.datum.label}</List.Item>
                     <List.Item>{props.datum.value}</List.Item>
-                    <List.Item
-                        icon={
-                            <ThemeIcon color="blue" size={24} radius="xl">
-                                <IconCircleDashed style={{ width: rem(16), height: rem(16) }} />
-                            </ThemeIcon>
-                        }
-                    >
-                        Submit a pull request once you are done
-                    </List.Item>
                 </List>
             </Blockquote>
         );
     };
 
-    const CenteredMetric = ({ centerX, centerY }: PieChartProps) => {
+	const CenteredMetric = ({ centerX, centerY }: PieChartProps) => {
         let total = 0;
-        total += props.data[0].value * 4;
-        total += props.data[1].value * 9;
-        total += props.data[2].value * 4;
+        total += props.data[0].value;
+        total += props.data[1].value;
+        total += props.data[2].value;
 
         return (
             <text
@@ -58,26 +49,25 @@ export const FoodChart2 = (props: { data: FoodPieChartDataItem[] }) => {
                 fill="black"
                 dominantBaseline="central"
                 style={{
-                    fontSize: "32px",
+                    fontSize: "24px",
                     //fontWeight: 'bold',
                 }}
             >
-                {total}
+                {Math.round(total/100)/10}L
             </text>
         );
     };
-    
+
     return (
         <ResponsivePie
             data={props.data}
-            margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
+            margin={{ top: 0, right: 5, bottom: 0, left: 5 }}
             innerRadius={0.6}
-            endAngle={-360}
-            cornerRadius={8}
+            cornerRadius={0}
             tooltip={PieTooltip}
-            //tooltip={() => <></>}
-            activeInnerRadiusOffset={8}
-            colors={{ scheme: "purpleRed_green" }}
+			endAngle={-360}
+            activeInnerRadiusOffset={1}
+            colors={{ scheme: "category10" }}
             borderWidth={1}
             borderColor="#130707"
             layers={["arcs", "arcLabels", CenteredMetric]}
@@ -117,7 +107,7 @@ export const FoodChart2 = (props: { data: FoodPieChartDataItem[] }) => {
             fill={[
                 {
                     match: {
-                        id: "ruby",
+                        id: "x",
                     },
                     id: "dots",
                 },

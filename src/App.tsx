@@ -3,6 +3,7 @@ import LoginPage from './pages/loginPage';
 import '@mantine/core/styles.css';
 import DashboardPage from './pages/dashboardPage';
 import { ProtectedRoute } from './components/utilities/protectedRoute';
+import FoodPage from './pages/foodPage';
 
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
           <Route index element={<LoginPage />}></Route>
           <Route element={<ProtectedRoute />}>
             <Route path="dashboard" element={<DashboardPage />} />
+            <Route path="food" element={<FoodPage />} />
           </Route>
       </Routes>
     </>

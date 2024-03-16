@@ -2,15 +2,12 @@ import { useEffect, useState } from "react";
 import { Button, Card, PasswordInput, TextInput } from "@mantine/core";
 import "../styles/styles.scss";
 import { supabase } from "../supabase/supabase";
-import { useAppDispatch, useAppSelector } from "../store/hooks";
-import { login } from "../store/slices/userSlice";
 import { useNavigate } from "react-router-dom";
+import { getUserLogged, setUserLogged } from "../store/localStorage/settings";
 
 export default function LoginPage() {
-    const dispatch = useAppDispatch();
-    const loginUser = () => dispatch(login());
-    const user = useAppSelector((state) => state.user);
-    let navigate = useNavigate();
+    const [userLoggedIn, setUserLoggedIn] = useState<boolean>(getUserLogged());
+    const navigate = useNavigate();
 
     const [email, setEmail] = useState<string>("");
     const [password, setPassword] = useState<string>("");
@@ -24,20 +21,21 @@ export default function LoginPage() {
         if (error) {
             console.error("Error signing in:", error.message);
         } else {
-            loginUser();
+            setUserLogged(true);
+            setUserLoggedIn(true);
         }
     };
-
-    useEffect(() => {
-        if (user.login) {
-            goToDashboard();
-        }
-    }, [user]);
 
     const goToDashboard = () => {
         const path = "/dashboard";
         navigate(path);
     };
+
+    useEffect(() => {
+        if (userLoggedIn) {
+            goToDashboard();
+        }
+    }, [userLoggedIn]);
 
     return (
         <div className="center">
