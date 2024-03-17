@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Button, Card, PasswordInput, TextInput } from "@mantine/core";
+import { Button, Card, PasswordInput, TextInput, rem } from "@mantine/core";
 import "../styles/styles.scss";
 import { supabase } from "../supabase/supabase";
 import { useNavigate } from "react-router-dom";
@@ -40,9 +40,9 @@ export default function LoginPage() {
     return (
         <div className="center">
             <Card>
-                <TextInput mt={5} value={email} onChange={(event) => setEmail(event.currentTarget.value)} description="Email"></TextInput>
-                <PasswordInput mt={5} value={password} onChange={(event) => setPassword(event.currentTarget.value)} description="Password"></PasswordInput>
-                <Button mt={20} mb={10} onClick={signIn}>
+                <TextInput variant="filled" radius="xs" mt={5} value={email} onChange={(event) => setEmail(event.currentTarget.value)} description="Email"></TextInput>
+                <PasswordInput variant="filled" radius="xs" mt={5} value={password} onChange={(event) => setPassword(event.currentTarget.value)} description="Password"></PasswordInput>
+                <Button radius="xs" variant='light' mt={20} mb={10} onClick={signIn}>
                     Login
                 </Button>
             </Card>
