@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Button, Card, PasswordInput, TextInput, rem } from "@mantine/core";
+import { Button, Card, PasswordInput, TextInput } from "@mantine/core";
 import "../styles/styles.scss";
 import { supabase } from "../supabase/supabase";
 import { useNavigate } from "react-router-dom";

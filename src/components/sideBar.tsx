@@ -1,5 +1,4 @@
-import { ActionIcon, Burger, Button, Group, Stack, Text, rem } from "@mantine/core";
-import { IconArrowNarrowLeft, IconMenu2 } from "@tabler/icons-react";
+import { Burger, Button, Group, Stack, Text, rem } from "@mantine/core";
 import "../styles/sidebar.scss";
 import { useState } from "react";
 import { getSidebarVisible, getUserLogged, setSidebarVisible, setUserLogged } from "../store/localStorage/settings";

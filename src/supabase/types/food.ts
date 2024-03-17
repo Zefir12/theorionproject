@@ -1,25 +1,25 @@
 export interface FoodType {
     carbs: any;
     fat: any;
-    portion_weigth: Number;
-    water_percentage: Number;
+    portion_weigth: number;
+    water_percentage: number;
     name: string;
-    protein: Number;
-    kcal: Number;
+    protein: number;
+    kcal: number;
 }
 
 export interface Food {
-    id: Number;
+    id: number;
     time_of_intake: string;
     food_types: FoodType;
-    food_amount: Number;
+    food_amount: number;
 }
 
 export interface TotalDailyMacro {
-    kcal: Number,
-    sugar: Number,
-    carbs: Number,
-    fat: Number,
-    saturated_fat: Number,
-    protein: Number,
+    kcal: number,
+    sugar: number,
+    carbs: number,
+    fat: number,
+    saturated_fat: number,
+    protein: number,
 }

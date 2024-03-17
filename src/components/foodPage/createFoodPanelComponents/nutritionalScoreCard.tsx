@@ -1,6 +1,6 @@
-import { Card, Text, Group, NumberInput, Stack, TextInput, rem, Button, SegmentedControl, Center, ThemeIcon, Collapse } from "@mantine/core";
+import { Card, Stack, rem, Button, SegmentedControl, Center, ThemeIcon, Collapse } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
-import { IconArrowDown, IconArrowUp, IconArrowsVertical, IconBottle, IconCode, IconExternalLink, IconEye, IconX } from "@tabler/icons-react";
+import { IconArrowDown, IconArrowUp, IconX } from "@tabler/icons-react";
 import { useEffect, useState } from "react";
 
 export interface NutritionalScore {

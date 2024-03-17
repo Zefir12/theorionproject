@@ -1,6 +1,6 @@
 import { Blockquote, List, ThemeIcon, rem } from "@mantine/core";
 import { PieTooltipProps, ResponsivePie } from "@nivo/pie";
-import { IconCircleCheck, IconCircleDashed, IconX } from "@tabler/icons-react";
+import { IconCircleCheck, IconCircleDashed } from "@tabler/icons-react";
 
 interface FoodPieChartDataItem {
     id: string;
