@@ -7,6 +7,8 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App.tsx";
 import { SideBar } from "./components/sideBar.tsx";
 import { store } from "./store/store.ts";
+import '@mantine/notifications/styles.css';
+import { Notifications } from '@mantine/notifications';
 
 const theme = createTheme({
     focusRing: "never",
@@ -18,6 +20,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         <Provider store={store}>
             <MantineProvider theme={theme} defaultColorScheme="dark">
                 <BrowserRouter basename="theorionproject">
+                    <Notifications  position="top-right" zIndex={1000} limit={5} />
                     <SideBar />
                     <App />
                 </BrowserRouter>

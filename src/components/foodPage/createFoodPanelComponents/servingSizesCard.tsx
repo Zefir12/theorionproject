@@ -1,12 +1,21 @@
 import { ActionIcon, Text, Card, Group, NumberInput, Stack, TextInput, rem, ScrollArea } from "@mantine/core";
 import { IconPlus } from "@tabler/icons-react";
-import { ServiceSize } from "../../../pages/foodPage";
 import { ServingProp } from "../servingProp";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-export const ServingSizesCard = () => {
+export interface ServiceSize {
+    name: string;
+    value: number;
+    disabled?: boolean;
+}
+
+export interface NutritionalServings {
+    servings: ServiceSize[]
+}
+
+export const ServingSizesCard = (props: {setNutriServings: React.Dispatch<React.SetStateAction<NutritionalServings>>}) => {
     const [serviceSizes, setServiceSizes] = useState<ServiceSize[]>([
-        { name: "Standard", value: 100, disabled: true },
+        { name: "Standard", value: 100 },
         { name: "Gram", value: 1 },
     ]);
 
@@ -16,6 +25,12 @@ export const ServingSizesCard = () => {
     const removeServiceSize = (index: number) => {
         setServiceSizes((data) => data.filter((_, i) => i !== index));
     };
+
+    useEffect(() => {
+        props.setNutriServings({
+            servings: serviceSizes
+        })
+    }, [serviceSizes])
 
     return (
         <Card w={rem(300)}>
@@ -62,7 +77,6 @@ export const ServingSizesCard = () => {
                                 key={index}
                                 name={item.name}
                                 value={item.value}
-                                disabled={item.disabled}
                                 onClick={() => removeServiceSize(index)}
                             ></ServingProp>
                         ))}

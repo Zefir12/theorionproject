@@ -5,7 +5,7 @@ import { roundToDecimal } from "../../../lib/utilities/numbers";
 
 const NutriInput = (props: { icon: React.ReactNode; name: string, value?: number, onChange?: (d: number | string) => void }) => {
     return (
-        <NumberInput onChange={props.onChange} value={props.value} leftSection={props.icon} min={0} variant="filled" size="xs" radius="xs" description={props.name} defaultValue={0} decimalScale={1} step={0.1} />
+        <NumberInput onChange={props.onChange} value={props.value} leftSection={props.icon} min={0} variant="filled" size="xs" radius="xs" description={props.name} defaultValue={0} decimalScale={3} step={0.1} />
     );
 };
 
@@ -17,7 +17,8 @@ export interface NutritionalValues {
     sugar: number,
     protein: number,
     salt: number,
-    fibre: number
+    fibre: number,
+    
 }
 
 export const NutritionalValueCard = (props: { setValueObject: React.Dispatch<React.SetStateAction<NutritionalValues>>}) => {

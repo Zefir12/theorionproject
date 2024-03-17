@@ -5,14 +5,12 @@ export const AddFoodPanel = () => {
         <Group w={"100%"} justify="center">
             <Group align="stretch" justify="space-between" w={"80%"} wrap="nowrap">
                 <Stack>
-                    <Button>pogqweqweqwe</Button>
-                    <Button>pog</Button>
-                    <Button>pog</Button>
+                    <Button variant="light">pogqweqweqwe</Button>
+                    <Button variant="light">pog</Button>
+                    <Button variant="light">pog</Button>
                 </Stack>
-                <Stack w={"100%"}>
-                    <Button>pog</Button>
-                    <Button>pog</Button>
-                    <Button>pog</Button>
+                <Stack w={"80%"}>
+                    <Button variant="subtle"></Button>
                 </Stack>
                 <Stack w={rem(300)} justify="flex-start">
                     <TextInput placeholder="Eggs.." />

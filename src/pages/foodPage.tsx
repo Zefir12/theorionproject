@@ -1,16 +1,9 @@
-import { Button, Container, Group, Stack, Tabs, TextInput, rem } from "@mantine/core";
+import { Container, Tabs } from "@mantine/core";
 import { IconChefHat, IconFridge, IconSettings } from "@tabler/icons-react";
-import { NutritionalValueCard } from "../components/foodPage/createFoodPanelComponents/nutritionalValuesCard";
-import { NutritionalInfoCard } from "../components/foodPage/createFoodPanelComponents/nutritionalInfoCard";
-import { ServingSizesCard } from "../components/foodPage/createFoodPanelComponents/servingSizesCard";
 import { CreateFoodPanel } from "../components/foodPage/panels/createFoodPanel";
 import { AddFoodPanel } from "../components/foodPage/panels/addFoodPanel";
 
-export interface ServiceSize {
-    name: string;
-    value: number;
-    disabled?: boolean;
-}
+
 
 export default function FoodPage() {
     return (
