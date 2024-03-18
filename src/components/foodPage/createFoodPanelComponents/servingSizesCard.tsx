@@ -33,7 +33,7 @@ export const ServingSizesCard = (props: {setNutriServings: React.Dispatch<React.
     }, [serviceSizes])
 
     return (
-        <Card w={rem(300)}>
+        <Card>
             <Stack justify="flex-start">
                 <Text ta="center">Porcje</Text>
                 <Group gap={0} justify="space-between" wrap="nowrap">

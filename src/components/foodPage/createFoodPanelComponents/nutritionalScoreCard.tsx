@@ -22,7 +22,7 @@ export const NutritionalScoreCard = (props: { setNutriScore: React.Dispatch<Reac
     }, [nova_score, nutri_score]);
 
     return (
-        <Card w={rem(300)}>
+        <Card>
             <Stack justify="flex-start" align="center">
                 <Button variant="subtle" onClick={toggle} leftSection={!opened ? <IconArrowDown></IconArrowDown> : <IconArrowUp></IconArrowUp>}>
                     Optional: NutriScores

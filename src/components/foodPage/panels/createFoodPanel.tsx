@@ -84,12 +84,12 @@ export const CreateFoodPanel = () => {
     return (
         <Group w={"100%"} justify="center">
             <Group pt={50} justify="center" align="flex-start" w={"80%"}>
-                <Stack>
+                <Stack w={rem(300)}>
                     <NutritionalInfoCard onAddFoodClicked={addFoodTypeToDatabase} setNutriInfo={setNutriInfo} />
                     <ServingSizesCard setNutriServings={setNutriServings} />
                 </Stack>
-                <Stack w={rem(300)} justify="flex-start">
-                    <NutritionalValueCard setValueObject={setNutriValues} />
+                <Stack w={rem(300)}>
+                    <NutritionalValueCard setNutriValue={setNutriValues} />
                     <NutritionalScoreCard setNutriScore={setNutriScores}/>
                 </Stack>
             </Group>

@@ -1,5 +1,6 @@
 import { Burger, Button, Group, Stack, Text, rem } from "@mantine/core";
 import "../styles/sidebar.scss";
+import { useMantineTheme } from '@mantine/core';
 import { useState } from "react";
 import { getSidebarVisible, getUserLogged, setSidebarVisible, setUserLogged } from "../store/localStorage/settings";
 import { supabase } from "../supabase/supabase";
@@ -11,6 +12,7 @@ export const SideBar = () => {
     const [, setLogged] = useState(getUserLogged());
     const navigate = useNavigate();
     const [opened, { toggle }] = useDisclosure();
+    const theme = useMantineTheme();
 
     const logoutUser = async () => {
         const { error } = await supabase.auth.signOut();
@@ -42,7 +44,7 @@ export const SideBar = () => {
                                 </Text>
                             </Group>
                         )}
-                        <Burger color="violet" transitionTimingFunction="ease-in-out" transitionDuration={400} opened={opened} onClick={toggleSidebar} aria-label="Toggle navigation" />
+                        <Burger color={theme.primaryColor} transitionTimingFunction="ease-in-out" transitionDuration={400} opened={opened} onClick={toggleSidebar} aria-label="Toggle navigation" />
                     </Group>
 
                     <Stack gap={rem(5)} px={12}>

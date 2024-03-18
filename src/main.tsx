@@ -13,6 +13,7 @@ import { Notifications } from '@mantine/notifications';
 const theme = createTheme({
     focusRing: "never",
     primaryColor: "violet",
+    primaryShade: 7
 });
 
 ReactDOM.createRoot(document.getElementById("root")!).render(

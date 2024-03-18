@@ -21,7 +21,7 @@ export interface NutritionalValues {
     
 }
 
-export const NutritionalValueCard = (props: { setValueObject: React.Dispatch<React.SetStateAction<NutritionalValues>>}) => {
+export const NutritionalValueCard = (props: { setNutriValue: React.Dispatch<React.SetStateAction<NutritionalValues>>}) => {
     const [kcal, setKcal] = useState<number>(0)
     const [fat, setFat] = useState<number>(0)
     const [fat_saturated, setFatSaturated] = useState<number>(0)
@@ -32,7 +32,7 @@ export const NutritionalValueCard = (props: { setValueObject: React.Dispatch<Rea
     const [fibre, setFibre] = useState<number>(0)
 
     useEffect(() => {
-        props.setValueObject({
+        props.setNutriValue({
             kcal: roundToDecimal(kcal),
             fat: roundToDecimal(fat),
             fat_saturated: roundToDecimal(fat_saturated),

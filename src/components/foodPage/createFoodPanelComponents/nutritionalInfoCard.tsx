@@ -19,7 +19,7 @@ export const NutritionalInfoCard = (props: { onAddFoodClicked?: () => void, setN
     }, [name, water_percentage])
 
     return (
-        <Card w={rem(300)}>
+        <Card>
         <Stack justify="flex-start">
             <TextInput value={name} onChange={(event) => setName(event.currentTarget.value)} variant="filled" size="xs" radius="xs" description="Name" placeholder="Steak with fires.." />
             <NumberInput

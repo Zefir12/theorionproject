@@ -8,7 +8,7 @@ import { AddFoodPanel } from "../components/foodPage/panels/addFoodPanel";
 export default function FoodPage() {
     return (
         <Container fluid h={"100%"} w={"100%"}>
-            <Tabs color="violet" defaultValue="createFood">
+            <Tabs color="violet" defaultValue="addFood">
                 <Tabs.List justify="center" pt={10}>
                     <Tabs.Tab value="addFood" leftSection={<IconFridge />}>
                         Add Food
